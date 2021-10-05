@@ -1,0 +1,11 @@
+{% load static %}
+
+<div class="menu-section">
+    <ul class="menu">
+        <li><a href="{% url 'index' %}">домой</a></li>
+        <li><a href="{% url 'mainapp:products' %}">продукты</a></li>
+        <li><a href="{% url 'contacts' %}">контакты</a></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="{% static 'online_store/js/menu.js' %}"></script>

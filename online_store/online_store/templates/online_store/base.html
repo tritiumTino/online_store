@@ -12,6 +12,10 @@
 </head>
 <body>
 <div class="container">
+    {% block header %}
+    {% include 'online_store/Includes/main_header.html' %}
+    {% endblock %}
+
     {% block content %}
     {% endblock %}
     <div class="clr"></div>

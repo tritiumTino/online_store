@@ -5,8 +5,11 @@
 {{ title|title }}
 {% endblock %}
 
+{% block header %}
+    {% include 'online_store/Includes/slider.html' %}
+{% endblock %}
+
 {% block content %}
-{% include 'online_store/Includes/slider.html' %}
 <div class="featured">
     <div class="featured-menu">
         <a class="active" href="#">Популярные</a><a href="#">Новинки</a>

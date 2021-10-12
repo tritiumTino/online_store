@@ -1,0 +1,38 @@
+[
+  {
+    "category": "Офис",
+    "name": "Серый диван",
+    "image": "media/products_images/2021/product-3-sm.jpg",
+    "short_desc": "Расположитесь комфортно",
+    "description": "Шикарный диван, чтобы отдохнуть после тяжелого рабочего дня",
+    "price": 45000.00,
+    "quantity": 5
+  },
+  {
+    "category": "Классика",
+    "name": "Стильные часы",
+    "image": "media/products_images/2021/product-4-sm.jpg",
+    "short_desc": "Впишутся в любой дизайн",
+    "description": "Отлично будут смотреться на любой стене",
+    "price": 2300.00,
+    "quantity": 12
+  },
+  {
+    "category": "Дом",
+    "name": "Модная лампа",
+    "image": "media/products_images/2021/product-1.jpg",
+    "short_desc": "Интересное решение",
+    "description": "Для тех, кто любит поинтереснее",
+    "price": 5199.98,
+    "quantity": 5
+  },
+  {
+    "category": "Модерн",
+    "name": "Настенная лампа",
+    "image": "media/products_images/2021/product-41_NAIjxGo.jpg",
+    "short_desc": "Лаконичный дизайн",
+    "description": "Уютный ламповый свет",
+    "price": 3450.00,
+    "quantity": 12
+  }
+]

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block header %}
-    {% include 'online_store/Includes/slider.html' %}
+{% include 'online_store/Includes/slider.html' %}
 {% endblock %}
 
 {% block content %}
@@ -14,28 +14,22 @@
     <div class="featured-menu">
         <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
     </div>
-    <a class="explore" href="#">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
+    <a class="explore" href="{% url 'products:products'%}">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
     <div class="clearfix">
     </div>
     <div class="tab-content">
+        {% for product in products %}
         <div class="block">
-            <a href="#"><img src="{% static 'online_store/img/product-1.jpg' %}" alt="">
+            <a href="{% url 'products:product_detail' slug=product.slug %}"><img
+                    src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
                 <div class="text">
                     <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
-                    <h4>Отличный стул</h4>
-                    <p>Расположитесь комфортно. </p>
+                    <h4>{{ product.short_desc }}</h4>
+                    <p>{{ product.description }}</p>
                 </div>
             </a>
         </div>
-        <div class="block">
-            <a href="#"><img src="{% static 'online_store/img/product-2.jpg' %}" alt="">
-                <div class="text">
-                    <img src="{% static 'online_store/img/icon-hover.png' %}" alt="">
-                    <h4>Стул повышенного качества</h4>
-                    <p>Не оторваться. </p>
-                </div>
-            </a>
-        </div>
+        {% endfor %}
     </div>
 </div>
 

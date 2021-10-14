@@ -5,6 +5,12 @@
         <li><a href="{% url 'index' %}">домой</a></li>
         <li><a href="{% url 'mainapp:products' %}">продукты</a></li>
         <li><a href="{% url 'contacts' %}">контакты</a></li>
+        {% if not user.is_authenticated %}
+        <li><a href="{% url 'auth:login' %}">войти</a></li>
+        {% else %}
+        <li><a href="{% url 'auth:edit' %}">профиль</a></li>
+        <li><a href="{% url 'auth:logout' %}">выйти</a></li>
+        {% endif %}
     </ul>
 </div>
 

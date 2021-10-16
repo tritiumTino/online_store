@@ -97,7 +97,22 @@ html, body {
     left: 1210px;
 }
 
-.clearfix:after {
+.cartIconWrap {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    color: white;
+    background: #f44336;
+    border-radius: 50%;
+    position: absolute;
+    text-align: center;
+    right: -8px;
+    top: -10px;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+.clearfix-custom:after {
     content: "";
     display: block;
     clear: both;
@@ -280,6 +295,7 @@ html, body {
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     margin-bottom: 120px;
 }
 
@@ -593,7 +609,7 @@ html, body {
     color: #6c6c6c;
 }
 
-.footer {
+.footer-custom {
     height: 384px;
     width: 1169px;
     background-color: #f7f7f7;
@@ -603,11 +619,11 @@ html, body {
     clear: both;
 }
 
-.footer form {
+.footer-custom form {
     position: relative;
 }
 
-.footer form a i {
+.footer-custom form a i {
     display: block;
     width: 21px;
     height: 21px;
@@ -618,18 +634,18 @@ html, body {
     color: #6c6c6c;
 }
 
-.text-footer {
+.text-footer-custom {
     margin-top: 120px;
     width: 221px;
     float: left;
     margin-right: 68px;
 }
 
-.text-footer:last-child {
+.text-footer-custom:last-child {
     margin-right: 0;
 }
 
-.text-footer h3 {
+.text-footer-custom h3 {
     text-transform: uppercase;
     color: #6c6c6c;
     font-size: 18px;
@@ -639,7 +655,7 @@ html, body {
     letter-spacing: 2px;
 }
 
-.text-footer p {
+.text-footer-custom p {
     color: #212121;
     font-size: 14px; /* Приближение из-за подстановки шрифтов */
     font-weight: 300;
@@ -648,7 +664,7 @@ html, body {
     margin-bottom: 20px;
 }
 
-.text-footer a {
+.text-footer-custom a {
     text-decoration: none;
     text-transform: uppercase;
     color: #212121;
@@ -658,11 +674,11 @@ html, body {
     text-align: left;
 }
 
-.text-footer a:hover {
+.text-footer-custom a:hover {
     border-bottom: 2px solid #212121;
 }
 
-.text-footer a:active {
+.text-footer-custom a:active {
     color: #6c6c6c;
     border-bottom: 2px solid #6c6c6c;
 }
@@ -675,15 +691,15 @@ td:first-child {
     width: 235px;
 }
 
-.text-footer:nth-child(2) {
+.text-footer-custom:nth-child(2) {
     width: 422px;
 }
 
-.text-footer:nth-child(3) {
+.text-footer-custom:nth-child(3) {
     width: 363px;
 }
 
-.text-footer input {
+.text-footer-custom input {
     border-width: 1px;
     border-color: #d9dee1;
     border-style: solid;
@@ -700,13 +716,13 @@ td:first-child {
     padding-right: 70px;
 }
 
-.text-footer input:focus {
+.text-footer-custom input:focus {
     border-width: 1px;
     border-color: #6c6c6c;
     border-style: solid;
 }
 
-.footer .small {
+.footer-custom .small {
     text-transform: uppercase;
     float: left;
     color: #6c6c6c;
@@ -760,7 +776,7 @@ td:first-child {
     margin-left: 3px;
 }
 
-.footer .small:nth-child(4) {
+.footer-custom .small:nth-child(4) {
     float: right;
 }
 

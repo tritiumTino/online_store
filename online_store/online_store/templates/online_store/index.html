@@ -15,13 +15,13 @@
         <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
     </div>
     <a class="explore" href="{% url 'products:products'%}">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
-    <div class="clearfix">
+    <div class="clearfix-custom">
     </div>
     <div class="tab-content">
         {% for product in products %}
         <div class="block">
             <a href="{% url 'products:product_detail' slug=product.slug %}"><img
-                    src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
+                    src="{{ product.image.url }}" alt="{{ product.name }}">
                 <div class="text">
                     <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
                     <h4>{{ product.short_desc }}</h4>

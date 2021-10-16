@@ -10,84 +10,19 @@
 {% endblock %}
 
 {% block content %}
-<div class="details">
-    <div class="links clearfix">
-        <ul class="links-menu">
-            {% for link in links_menu %}
-            <li>
-                <a href="{% url 'products:category_detail' slug=link.slug %}">{{ link.name }}</a>
-            </li>
-            {% endfor %}
-            <li><a href="{% url 'products:products'%}" class="active">все</a></li>
-
-        </ul>
-    </div>
-    {% for product in products %}
-    <div class="details-products">
-        <div class="details-slider">
-            <div class="slider-product">
-                <img src="{{ MEDIA_URL }}{{ product.image.url }}" alt="{{ product.name }}">
-            </div>
-<!--            <div class="slider-control">-->
-<!--                {% for prod in slider_products %}-->
-<!--                <div class="block">-->
-<!--                    <a href="#"><img src="{% static prod.img %}" alt="">-->
-<!--                        <div class="text">{{ prod.text }}</div>-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--                {% endfor %}-->
-<!--            </div>-->
-        </div>
-
-        <div class="description">
-            <h3 class="big-bold">{{ product.name }}</h3>
-            <h3 class="red">{{ product.short_desc }}</h3>
-            <p class="price"> {{ product.price }} <span>руб</span></p>
-            <a href="#" class="red-button">
-                заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+{% include 'mainapp/Includes/product_menu.html' %}
+    <div class="tab-content">
+        {% for product in products %}
+        <div class="block">
+            <a href="{{ product.get_absolute_url }}"><img
+                    src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="text">
+                    <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
+                    <h4>{{ product.short_desc }}</h4>
+                    <p>{{ product.price }}</p>
+                </div>
             </a>
-            <div class="description-text">
-                <p>{{ product.description }}</p>
-            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-
-<!--    <div class="related">-->
-<!--        <div class="title clearfix">-->
-<!--            <h2>Похожие продукты</h2>-->
-<!--            <a class="explore" href="#">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>-->
-<!--        </div>-->
-<!--        <div class="related-products clearfix">-->
-<!--            <div class="block">-->
-<!--                <a href="#"><img src="{% static 'online_store/img/product-11.jpg' %}" alt="">-->
-<!--                    <div class="text">-->
-<!--                        <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">-->
-<!--                        <h4>Стул повышенного качества</h4>-->
-<!--                        <p>Не оторваться. </p>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="block">-->
-<!--                <a href="#"><img src="{% static 'online_store/img/product-21.jpg' %}" alt="">-->
-<!--                    <div class="text">-->
-<!--                        <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">-->
-<!--                        <h4>Стул повышенного качества</h4>-->
-<!--                        <p>Не оторваться. </p>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="block">-->
-<!--                <a href="#"><img src="{% static 'online_store/img/product-31.jpg' %}" alt="">-->
-<!--                    <div class="text">-->
-<!--                        <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">-->
-<!--                        <h4>Стул повышенного качества</h4>-->
-<!--                        <p>Не оторваться. </p>-->
-<!--                    </div>-->
-<!--                </a>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-</div>
 {% endblock content %}

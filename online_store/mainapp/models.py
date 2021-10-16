@@ -22,7 +22,7 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='обновлено')
 
     def get_absolute_url(self):
-        return reverse('category_detail', kwargs={'slug': self.slug})
+        return reverse('products:category_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -51,7 +51,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='обновлено')
 
     def get_absolute_url(self):
-        return reverse('product_detail', kwargs={'slug': self.slug})
+        return reverse('products:product_detail', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
         if not self.id:

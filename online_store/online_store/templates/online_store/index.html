@@ -1,5 +1,6 @@
 {% extends 'online_store/base.html' %}
 {% load static %}
+{% load product_tag %}
 
 {% block title %}
 {{ title|title }}
@@ -17,20 +18,7 @@
     <a class="explore" href="{% url 'products:products'%}">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
     <div class="clearfix-custom">
     </div>
-    <div class="tab-content">
-        {% for product in products %}
-        <div class="block">
-            <a href="{% url 'products:product_detail' slug=product.slug %}"><img
-                    src="{{ product.image.url }}" alt="{{ product.name }}">
-                <div class="text">
-                    <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
-                    <h4>{{ product.short_desc }}</h4>
-                    <p>{{ product.description }}</p>
-                </div>
-            </a>
-        </div>
-        {% endfor %}
-    </div>
+    {% get_last_products %}
 </div>
 
 {% endblock content %}

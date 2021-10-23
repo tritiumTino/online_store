@@ -296,13 +296,14 @@ html, body {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 90vw;
     margin-bottom: 120px;
 }
 
 .tab-content .block {
     height: 270px;
     width: 270px;
-    position: relative;
+    /*position: relative;*/
 }
 
 .tab-content a .text {

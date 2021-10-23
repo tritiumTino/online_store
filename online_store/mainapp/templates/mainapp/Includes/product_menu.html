@@ -1,5 +1,8 @@
+{% load product_tag %}
+
 <div class="links clearfix">
     <ul class="links-menu">
+        {% get_categories as links_menu %}
         {% for link in links_menu %}
         <li>
             <a href="{{ link.get_absolute_url }}"

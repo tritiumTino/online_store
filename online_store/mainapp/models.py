@@ -20,6 +20,7 @@ class Category(models.Model):
     slug = models.SlugField(max_length=150, unique=True, blank=True, verbose_name='ссылка')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='создано')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='обновлено')
+    is_active = models.BooleanField(verbose_name='активно', default=True)
 
     def get_absolute_url(self):
         return reverse('products:category_detail', kwargs={'slug': self.slug})
@@ -27,6 +28,10 @@ class Category(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = gen_slug(self.name)
+        if self.is_active is False:
+            for product in self.products.all():
+                product.is_active = False
+                product.save()
         super(Category, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -49,6 +54,7 @@ class Product(models.Model):
     quantity = models.PositiveIntegerField(verbose_name='количество на складе', default=0)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='создано')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='обновлено')
+    is_active = models.BooleanField(verbose_name='активно', default=True)
 
     def get_absolute_url(self):
         return reverse('products:product_detail', kwargs={'slug': self.slug})

@@ -101,6 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTH_USER_MODEL = 'authnapp.ShopUser'
+LOGIN_URL = '/auth/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -121,6 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "online_store", "static"),
+    os.path.join(BASE_DIR, "basketapp", "static"),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

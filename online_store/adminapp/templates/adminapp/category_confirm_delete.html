@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="category_delete">
-    Уверены, что хотите удалить категорию "{{ category_to_delete.name }}"?
+    Уверены, что хотите удалить категорию "{{ object.name }}"?
     {% if products %}
     Так же удалятся товары:
       <ul>
@@ -14,7 +14,7 @@
         {% endfor %}
       </ul>
     {% endif %}
-    <form action="{% url 'staff:category_delete' category_to_delete.pk %}"
+    <form action="{% url 'staff:category_delete' object.pk %}"
           method="post">
         {% csrf_token %}
         <button name="submit" class="btn btn-danger">Да, удалить</button>

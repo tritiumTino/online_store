@@ -33,6 +33,24 @@
     </div>
 </div>
 
+<div class="products_list">
+    <div class="paginator">
+        {% if products.has_previous %}
+        <a href="{% url 'products:products' products.previous_page_number %}">
+            <
+        </a>
+        {% endif %}
+        <span class="current">
+                                страница {{ products.number }} из
+                                {{ products.paginator.num_pages }}
+                              </span>
+        {% if products.has_next %}
+        <a href="{% url 'products:products' products.next_page_number %}">
+            >
+        </a>
+        {% endif %}
+    </div>
+</div>
 
 <div class="tab-content">
     {% for product in products %}
@@ -48,4 +66,5 @@
     </div>
     {% endfor %}
 </div>
+
 {% endblock content %}

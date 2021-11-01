@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'mainapp',
     'authnapp',
-    'basketapp'
+    'basketapp',
+    'adminapp'
 ]
 
 MIDDLEWARE = [

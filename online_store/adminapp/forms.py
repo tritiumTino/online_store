@@ -27,3 +27,16 @@ class CategoryCreateForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
             if field_name == 'is_active':
                 field.widget.attrs['class'] = 'form-check-input'
+
+
+class ProductEditForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super(ProductEditForm, self).__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            if field_name == 'is_active':
+                field.widget.attrs['class'] = 'form-check-input'

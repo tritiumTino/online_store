@@ -15,7 +15,7 @@
     <div class="featured-menu">
         <a class="active" href="#">Популярные</a><a href="#">Новинки</a>
     </div>
-    <a class="explore" href="{% url 'products:products'%}">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
+    <a class="explore" href="{% url 'products:main'%}">показать все <img src="{% static 'online_store/img/arrow.png' %}" alt=""></a>
     <div class="clearfix-custom">
     </div>
     {% get_last_products %}

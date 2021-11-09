@@ -4,14 +4,14 @@
     <ul class="links-menu">
         {% get_categories as links_menu %}
         {% for link in links_menu %}
-        <li>
-            <a href="{{ link.get_absolute_url }}"
-            class="{% if request.resolver_match.kwargs.slug == link.slug %}
-                        active
-                      {% endif %}">{{ link.name }}</a>
-        </li>
+                <li>
+                    <a href="{{ link.get_absolute_url }}"
+                    class="{% if request.resolver_match.kwargs.slug == link.slug %}
+                                active
+                              {% endif %}">{{ link.name }}</a>
+                </li>
         {% endfor %}
-        <li><a href="{% url 'products:products'%}" class="{% if not request.resolver_match.kwargs.slug %}
+        <li><a href="{% url 'products:main'%}" class="{% if not request.resolver_match.kwargs.slug %}
                         active
                       {% endif %}">все</a></li>
     </ul>

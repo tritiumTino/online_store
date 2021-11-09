@@ -4,11 +4,11 @@
 {% block content %}
 <main>
     <div class="container-fluid">
-        <h1 class="mt-4">Категории</h1>
+        <h1 class="mt-4">Товары категории {{ category.name }}</h1>
         <div class="card mb-4">
             <div class="card-header">
                 <i class="fas fa-table mr-1"></i>
-                Категории
+                Товары
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,7 +16,6 @@
                         <thead>
                         <tr>
                             <th>Название</th>
-                            <th>К товарам</th>
                             <th>Создано</th>
                             <th>Обновлено</th>
                             <th>Активный</th>
@@ -26,7 +25,6 @@
                         <tfoot>
                         <tr>
                             <th>Название</th>
-                            <th>К товарам</th>
                             <th>Создано</th>
                             <th>Обновлено</th>
                             <th>Активный</th>
@@ -34,17 +32,12 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        {% for category in object_list %}
-                        <tr {% if not category.is_active %} style="opacity: 0.5;" {% endif %}>
-                            <td><a href="{% url 'staff:category_update' category.id %}"
-                                   style="color: dodgerblue">{{ category.name|title }}</a></td>
-                            <td>
-                                <a href="{% url 'staff:products' category.id %}"
-                                   class="btn btn-warning" tabindex="-1"
-                                   role="button" aria-disabled="true">Товары категории</a>
-                            </td>
-                            <td>{{ category.created_at }}</td>
-                            <td>{{ category.updated_at }}</td>
+                        {% for product in products %}
+                        <tr {% if not product.is_active %} style="opacity: 0.5;" {% endif %}>
+                            <td><a href="{% url 'staff:product_update' product.id %}"
+                                   style="color: dodgerblue">{{ product.name|title }}</a></td>
+                            <td>{{ product.created_at }}</td>
+                            <td>{{ product.updated_at }}</td>
                             <td class="text-center">
                                 {% if product.is_active %}
                                 <i class="fa fa-check-circle"></i>
@@ -53,8 +46,8 @@
                                 {% endif %}
                             </td>
                             <td>
-                                <a {% if not category.is_active %} class="invisible" {% endif %}
-                                   href="{% url 'staff:category_delete' category.id %}">
+                                <a {% if not product.is_active %} class="invisible" {% endif %}
+                                   href="{% url 'staff:product_delete' product.id %}">
                                     <i class="fa fa-times-circle"></i>
                                 </a>
                             </td>
@@ -65,8 +58,8 @@
                 </div>
             </div>
             <div class="card-footer">
-                <a href="{% url 'staff:category_create' %}">
-                    <button class="btn btn-success">Создать категорию товаров</button>
+                <a href="{% url 'staff:product_create' category.pk %}">
+                    <button class="btn btn-success">Создать новый товар</button>
                 </a>
             </div>
         </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponseRedirect, redirect
-from .forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from .forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from django.contrib import auth
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from authnapp.models import ShopUser
 from django.utils.timezone import now
+from django.db import transaction
 
 
 def login(request):
@@ -61,21 +62,25 @@ def register(request):
 
 
 @login_required
+@transaction.atomic
 def edit(request):
     title = 'профиль'
 
     if request.method == 'POST':
         edit_form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
+        profile_form = ShopUserProfileEditForm(request.POST, request.FILES, instance=request.user.shopuserprofile)
 
-        if edit_form.is_valid():
+        if edit_form.is_valid() and profile_form.is_valid():
             edit_form.save()
             return HttpResponseRedirect(reverse('auth:edit'))
     else:
         edit_form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
 
     context = {
         'title': title,
-        'edit_form': edit_form
+        'edit_form': edit_form,
+        'profile_form': profile_form
     }
     return render(request, 'authnapp/edit.html', context)
 

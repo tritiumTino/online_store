@@ -26,6 +26,10 @@ class Basket(models.Model):
         _total_cost = sum(list(map(lambda x: x.get_product_cost, _items)))
         return _total_cost
 
+    @staticmethod
+    def get_items(user):
+        return Basket.objects.filter(user=user)
+
     class Meta:
         verbose_name = 'корзина'
         verbose_name_plural = 'корзины'

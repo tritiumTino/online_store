@@ -5,8 +5,7 @@ from urllib.parse import urlencode, urlunparse
 import requests
 from django.utils import timezone
 from social_core.exceptions import AuthForbidden
-
-from authapp.models import ShopUserProfile
+from authnapp.models import ShopUserProfile
 
 
 def save_user_profile(backend, user, response, *args, **kwargs):

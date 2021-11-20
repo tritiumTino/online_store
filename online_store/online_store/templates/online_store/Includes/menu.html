@@ -1,5 +1,5 @@
 {% load static %}
-{% load basket_tag %}
+<!--{% load basket_tag %}-->
 
 <div class="menu-section">
     <ul class="menu">
@@ -19,10 +19,10 @@
         {% endif %}
     </ul>
     <a href="#" class="search"></a>
-    {% get_basket user as basket %}
+<!--    {% get_basket user as basket %}-->
     {% if basket %}
     <a href="{% url 'basket:view' %}" class="basket">
-        <span class="cartIconWrap">{{ basket.total }}</span>
+        <span class="cartIconWrap">{{ total }}</span>
     </a>
     {% endif %}
 </div>

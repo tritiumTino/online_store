@@ -31,6 +31,11 @@
         <button name="submit" class="btn btn-dark">Войти</button>
         <a href="{% url 'auth:register' %}" class="btn btn-outline-dark" tabindex="-1" role="button"
            aria-disabled="true">Зарегистрироваться</a>
+        <button class="btn btn-round form-control">
+            <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/">
+                Вход через ВКонтакте
+            </a>
+        </button>
     </form>
     {% endif %}
 </div>

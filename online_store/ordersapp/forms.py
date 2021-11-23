@@ -24,3 +24,5 @@ class OrderItemForm(forms.ModelForm):
         super(OrderItemForm, self).__init__(*args, **kwargs)
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
+
+        self.fields['product'].queryset = Product.objects.filter(is_active=True, quantity__gte=1)

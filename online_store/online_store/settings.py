@@ -92,10 +92,15 @@ WSGI_APPLICATION = 'online_store.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
+     'default': {
+        'NAME': 'geekshop',
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'postgres',
+     }
 }
 
 # Password validation

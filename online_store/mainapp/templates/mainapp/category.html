@@ -1,0 +1,28 @@
+{% extends 'online_store/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ title|title }}
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'mainapp/style.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'mainapp/Includes/product_menu.html' %}
+    <div class="tab-content">
+        {% for product in products %}
+        <div class="block">
+            <a href="{{ product.get_absolute_url }}"><img
+                    src="{{ product.image.url }}" alt="{{ product.name }}">
+                <div class="text">
+                    <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
+                    <h4>{{ product.short_desc }}</h4>
+                    <p>{{ product.price }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

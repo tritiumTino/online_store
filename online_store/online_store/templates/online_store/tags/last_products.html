@@ -1,0 +1,16 @@
+{% load static %}
+
+<div class="tab-content">
+    {% for product in last_products %}
+    <div class="block">
+        <a href="{% url 'products:product_detail' slug=product.slug %}"><img
+                src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="text">
+                <img src="{% static 'online_store/img/icon-hover.png' %}" alt="img">
+                <h4>{{ product.short_desc }}</h4>
+                <p>{{ product.description }}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from mainapp.models import Product
+from django.utils.functional import cached_property
 
 
 class BasketQuerySet(models.QuerySet):
@@ -19,6 +20,10 @@ class Basket(models.Model):
     is_active = models.BooleanField(verbose_name='активно', default=True)
     objects = BasketQuerySet.as_manager()
 
+    @cached_property
+    def get_items_cached(self):
+        return self.user.basket.select_related()
+
     @staticmethod
     def get_item(pk):
         return Basket.objects.filter(pk=pk).first()
@@ -29,13 +34,13 @@ class Basket(models.Model):
 
     @property
     def get_total_quantity(self):
-        _items = Basket.objects.filter(user=self.user)
+        _items = self.get_items_cached
         _total_quantity = sum(list(map(lambda x: x.quantity, _items)))
         return _total_quantity
 
     @property
     def get_total_cost(self):
-        _items = Basket.objects.filter(user=self.user)
+        _items = self.get_items_cached
         _total_cost = sum(list(map(lambda x: x.get_product_cost, _items)))
         return _total_cost
 

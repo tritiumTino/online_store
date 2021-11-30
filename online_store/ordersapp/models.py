@@ -44,16 +44,27 @@ class Order(models.Model):
     def __str__(self):
         return f'Заказ {self.user.username} №{self.id} от {self.created}'
 
-    def get_total_quantity(self):
-        items = self.orderitems.select_related()
+    @property
+    def selected_items(self):
+        return self.orderitems.select_related()
+
+    def get_summary(self):
+        items = self.selected_items
+        return {
+            'total_cost': self.get_total_cost(items),
+            'total_quantity': self.get_total_quantity(items),
+        }
+
+    @staticmethod
+    def get_total_quantity(items):
         return sum(list(map(lambda x: x.quantity, items)))
 
     def get_product_type_quantity(self):
         items = self.orderitems.select_related()
         return len(items)
 
-    def get_total_cost(self):
-        items = self.orderitems.select_related()
+    @staticmethod
+    def get_total_cost(items):
         return sum(list(map(lambda x: x.quantity * x.product.price, items)))
 
 

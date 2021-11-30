@@ -1,5 +1,5 @@
 {% extends "online_store/base.html" %}
-{% load static %}
+{% load static cache %}
 
 {% block js %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -37,7 +37,9 @@
                                {% endif %}
                                {{ field.errors.as_ul }}
                                {% if field.name != 'price' %}
-                                    {{ field }}
+                                    {% cache 300 orderitemform_product field.value %}
+                                        {{ field }}
+                                    {% endcache %}
                                {% else %}
                                     {% if field.value %}
                                         <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">
